@@ -5,22 +5,42 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import Root, { loader as rootLoader } from "./routes/root";
+import Root from "./routes/root.jsx";
 import ErrorPage from "./error-page.jsx";
 import View, { loader as viewLoader} from "./routes/view.jsx";
+import Views , { loader as viewsLoader } from "./routes/views.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
         errorElement: <ErrorPage />,
-        loader: rootLoader,
         children: [
             {
-                path: "/views/:viewId",
-                element: <View />    ,
-                loader: viewLoader,
+                path: "/views",
+                element: <Views />,
+                loader: viewsLoader,
+                children: [
+                    {
+                        path: ":viewId",
+                        loader: viewLoader,
+                        element: <View />,
+                    }
+                ]
+            },
+            {
+                path: "/drags",
+                element: <Views />,
+                loader: viewsLoader,
+                children: [
+                    {
+                        path: "/drags/:viewId",
+                        element: <View />,
+                        loader: viewLoader,
+                    }
+                ]
             }
+
         ]
     },
 ]);

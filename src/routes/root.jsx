@@ -1,39 +1,32 @@
 import React from 'react';
-import {Outlet, Link, useLoaderData} from "react-router-dom";
-import { getViews } from "../views";
+import {Outlet, Link } from "react-router-dom";
 
-export async function loader() {
-    const views = await getViews();
-    return { views };
-}
 
 const Root = () => {
-    const { views } = useLoaderData();
     return (
         <div>
             <header className="main-header">
                 <nav>
-                    {views.length ? (
-                        <ul>
-                            {views.map((view) => (
-                                <li key={view.id}>
-                                    <Link to={`views/${view.id}`}>
-                                        {view.id}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>
-                            <i>No views</i>
-                        </p>
-                    )}
+                    <ul>
+                        <li key={1}>
+                            <Link to="views">
+                                Views
+                            </Link>
+                        </li>
+                        <li key={2}>
+                            <Link to="drags">
+                                Drags
+                            </Link>
+                        </li>
+                        <li key={3}>
+                            <Link to="d3">
+                                D3
+                            </Link>
+                        </li>
+                    </ul>
                 </nav>
             </header>
-
-            <div>
-                <Outlet />
-            </div>
+            <Outlet />
         </div>
     );
 };

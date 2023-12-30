@@ -1,5 +1,5 @@
 import { Form, useLoaderData } from "react-router-dom";
-import { getView } from "../views";
+import { getView } from "../viewsData.jsx";
 
 export function loader({ params }) {
     const view = getView(params.viewId);

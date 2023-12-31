@@ -23,6 +23,16 @@ const Root = () => {
                                 D3
                             </Link>
                         </li>
+                        <li key={4}>
+                            <Link to="three">
+                                Three
+                            </Link>
+                        </li>
+                        <li key={5}>
+                            <Link to="gsap">
+                                GSAP
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </header>

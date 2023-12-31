@@ -1,31 +1,31 @@
 import React from 'react';
 import {Outlet, Link, useLoaderData} from "react-router-dom";
-import { getViews } from "../data/viewsData.jsx";
+import {getThrees} from "../data/threesData.jsx";
 
 export function loader() {
-    const views = getViews();
-    return { views };
+    const threes = getThrees();
+    return { threes };
 }
 
-const Views = () => {
-    const { views } = useLoaderData();
+const Threes = () => {
+    const { threes } = useLoaderData();
     return (
         <>
             <header className="second-header">
                 <nav>
-                    {views.length ? (
+                    {threes.length ? (
                         <ul>
-                            {views.map((view) => (
-                                <li key={view.id}>
-                                    <Link to={`${view.id}`}>
-                                        {view.id}
+                            {threes.map((three) => (
+                                <li key={three.id}>
+                                    <Link to={`${three.id}`}>
+                                        {three.id}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     ) : (
                         <p>
-                            <i>No views</i>
+                            <i>No Threes</i>
                         </p>
                     )}
                 </nav>
@@ -35,4 +35,4 @@ const Views = () => {
     );
 };
 
-export default Views;
+export default Threes;

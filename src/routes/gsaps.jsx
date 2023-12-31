@@ -1,31 +1,31 @@
 import React from 'react';
 import {Outlet, Link, useLoaderData} from "react-router-dom";
-import { getViews } from "../data/viewsData.jsx";
+import {getGsaps} from "../data/gsapData.jsx";
 
 export function loader() {
-    const views = getViews();
-    return { views };
+    const gsaps = getGsaps();
+    return { gsaps };
 }
 
-const Views = () => {
-    const { views } = useLoaderData();
+const Gsaps = () => {
+    const { gsaps } = useLoaderData();
     return (
         <>
             <header className="second-header">
                 <nav>
-                    {views.length ? (
+                    {gsaps.length ? (
                         <ul>
-                            {views.map((view) => (
-                                <li key={view.id}>
-                                    <Link to={`${view.id}`}>
-                                        {view.id}
+                            {gsaps.map((gsap) => (
+                                <li key={gsap.id}>
+                                    <Link to={`${gsap.id}`}>
+                                        {gsap.id}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     ) : (
                         <p>
-                            <i>No views</i>
+                            <i>No gsaps</i>
                         </p>
                     )}
                 </nav>
@@ -35,4 +35,4 @@ const Views = () => {
     );
 };
 
-export default Views;
+export default Gsaps;

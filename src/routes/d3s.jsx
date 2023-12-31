@@ -1,31 +1,31 @@
 import React from 'react';
 import {Outlet, Link, useLoaderData} from "react-router-dom";
-import { getViews } from "../data/viewsData.jsx";
+import {getD3s} from "../data/d3Data.jsx";
 
 export function loader() {
-    const views = getViews();
-    return { views };
+    const d3s = getD3s();
+    return { d3s };
 }
 
-const Views = () => {
-    const { views } = useLoaderData();
+const D3s = () => {
+    const { d3s } = useLoaderData();
     return (
         <>
             <header className="second-header">
                 <nav>
-                    {views.length ? (
+                    {d3s.length ? (
                         <ul>
-                            {views.map((view) => (
-                                <li key={view.id}>
-                                    <Link to={`${view.id}`}>
-                                        {view.id}
+                            {d3s.map((d3) => (
+                                <li key={d3.id}>
+                                    <Link to={`${d3.id}`}>
+                                        {d3.id}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     ) : (
                         <p>
-                            <i>No views</i>
+                            <i>No D3s</i>
                         </p>
                     )}
                 </nav>
@@ -35,4 +35,4 @@ const Views = () => {
     );
 };
 
-export default Views;
+export default D3s;

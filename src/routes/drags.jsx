@@ -1,31 +1,31 @@
 import React from 'react';
 import {Outlet, Link, useLoaderData} from "react-router-dom";
-import { getViews } from "../viewsData.jsx";
+import {getDrags} from "../data/dragsData.jsx";
 
 export function loader() {
-    const views = getViews();
-    return { views };
+    const drags = getDrags();
+    return { drags };
 }
 
 const Drags = () => {
-    const { views } = useLoaderData();
+    const { drags } = useLoaderData();
     return (
         <>
             <header className="second-header">
                 <nav>
-                    {views.length ? (
+                    {drags.length ? (
                         <ul>
-                            {views.map((view) => (
-                                <li key={view.id}>
-                                    <Link to={`views/${view.id}`}>
-                                        {view.id}
+                            {drags.map((drag) => (
+                                <li key={drag.id}>
+                                    <Link to={`${drag.id}`}>
+                                        {drag.id}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     ) : (
                         <p>
-                            <i>No views</i>
+                            <i>No drags</i>
                         </p>
                     )}
                 </nav>

@@ -21,6 +21,7 @@ const Clipped = styled(FullPage)`
 `;
 
 
+
 const Dec31 = () => {
     return (
         <>
